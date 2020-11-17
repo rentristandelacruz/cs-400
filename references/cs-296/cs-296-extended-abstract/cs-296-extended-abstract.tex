@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\geometry
+{
+a4paper,
+bottom=20mm,
+right=20mm,
+left=20mm,
+top=10mm,
+}
+
+\newcommand{\s}{\text{ }}
+
+\title
+{
+Reformulation, Extension, and Application of the\\
+Formal Framework for P Systems ({Extended Abstract})
+}
+\date{\today}
+\author{Ren Tristan A. de la Cruz}
+
+\begin{document}
+\maketitle
+
+% ================================================================================================ %
+
+\begin{abstract}
+\end{abstract}
+
+\textit{Membrane computing} is a field of theoretical computer science that studies different models 
+of computation known as \textit{P systems}. The term `\textit{P systems}' refers to a family of        
+models of computation which are inspired by biological processes. P system models use abstractions     
+of biological processes as computational operations. For example, different types of rules             
+(operations) used by most P system variants are abstractions of processes like \textit{chemical        
+reaction} and \textit{ion transport} that occur inside biological cells. Most P system variants use  
+\textit{object symbols} as the objects of computation. One can think of these object symbols as        
+abstraction of physical \textit{molecules} or \textit{ions}. P systems store \textit{multisets} of     
+these object symbols inside regions enclosed by \textit{membranes}. A P system has a collection of     
+these membranes with multisets of objects symbols inside. The membranes can be `connected' to each     
+other to form a \textit{membrane structure}.                                                           
+                                                                                                       
+Aside from studying P systems themselves, membrane computing also deals with applications of           
+P systems. P systems have been used to solve `hard' (NP-complete) problems. They have been used to     
+model natural phenomena like biological oscillations, population dynamics, and sodium-potassium pump 
+mechanism. Other P system applications include boolean circuit simulation, fault diagnosis models      
+for electric locomotive, linguistic applications, etc.                                                 
+                                                                                                       
+There are tens, if not hundreds, of P system variants. Their syntax are well-defined but the           
+semantics are often described in an informal manner. \emph{Formal framework} is an attempt to          
+formalize not only syntax but also the procedural semantics of a wide variety of P systems. There      
+are currently three versions of the framework, one for P systems with static membrane structures,      
+one for P systems with dynamic membrane structures, and another for static P systems with              
+input-output. The formal frameworks can be used to analyze, compared, and extended P systems.          
+                                                                                                       
+The \emph{first formal framework (FF1)} \cite{ff-static} is an attempt to formally define procedural 
+semantics for a large number of well-known variants of tissue P systems with static membrane         
+structures. The \emph{second formal framework (FF2)} \cite{ff-dynamic} is a similar attempt for P    
+systems with dynamic membrane structures. The \emph{third formal framework (FF3)} \cite{ff-snp} is   
+an extension of FF1 with the purpose of expressing spiking neural P systems \cite{snp} in this       
+extended framework.                                                                                  
+                                                                                                     
+The formal frameworks use and formalize notions/concepts common to most of their target P systems.   
+The main notions available in all three versions of the framework are the following:                 
+                                                                                                     
+\begin{enumerate}                                                                                    
+\item \emph{configuration} of the system                                                             
+\item \emph{rules} of the system                                                                     
+\item \emph{applicability} of a combination of rules                                                 
+\item \emph{allowed} combinations of rules                                                           
+\item how to \emph{apply} a combination of rules                                                     
+\item \emph{halting} condition for the system                                                        
+\end{enumerate}      
+
+
+In \cite{ff-using}, both FF1 and FF2 were used to implement different features of P system variants. 
+These features include \emph{membrane thickness/polarity/labels}, \emph{rule priorities}, and        
+\emph{membrane dissolution}. P system variants like \emph{catalytic P systems}, \emph{P systems with 
+symport/antiport} \cite{sym-anti-port}, \emph{P colonies}, and \emph{probabilistic P systems} were   
+also implemented as specific FF models. \cite{ff-using} shows that the formal framework can be used  
+to model a wide variety of P systems with diverse features and semantics.                            
+                                                                                                     
+The FF can be used to compare different P system variants. By translating P system variants to their 
+corresponding FF models, one can directly compare these FF models. The FF can be used a common       
+language to analyze, compare and extended different P system variants. 
+
+This research proposal has three aspects: (1) the reformulation of the formal framework, (2) the      
+extension of the formal framework, and (3) the application of the formal framework. 
+
+                                                                                                     
+Reformulating the formal framework means changing the framework by changing the notions/concepts     
+used or using different formalizations for these notions but not affecting the usefulness of the     
+framework. Extending the framework means adding new notions and formalizations to extended the       
+scope or usefulness of the framework. An extended framework can mean it can model more P system      
+variants or that there are more notions in the framework that can provide more insights to the       
+workings of existing `supported' P system variants. Application of the framework means using the     
+framework to analyze, compare, and/or extended existing P system variants. 
+
+The following are the specific objectives of this proposal:                                          
+                                                                                                     
+\begin{enumerate}                                                                                    
+   \item (Reformulation) Combine FF2 and FF3 into a single formal framework. This involves the       
+         addition of the $Input$ and $Output$ functions from FF3 to FF2. It also involves the use of 
+         regular multiset languages for \emph{permitting} or \emph{forbidding} conditions of the     
+         interaction rule. The purpose of this objective is to have a single formal framework (FF)   
+         that can be used of static or dynamic P systems.                                            
+   \item (Reformulation) Reformulate the interaction rule in FF (from objective 1) in a              
+         \emph{bottom-up} manner instead of the \emph{top-down} approach of the FF. The rule in the  
+         FF (or specifically FF2) contains 11 components because it is trying to be the most general 
+         and unrestricted version of a rule such that the rule types from the P system variants are  
+         simply restricted versions of the more general FF interaction rule. We call this approach   
+         of finding the most general and unrestricted form of the rule as \emph{top-down}. A rule    
+         can instead be defined as a `combination' of simpler `elementary' rules. We start from the  
+         \emph{bottom} with this `elementary' rules and use them to define a general rule which is   
+         a combination of these `elementary' rules.                                                  
+   \item (Application) Perform a comprehensive survey of the different P system variants and use the 
+         FF to create the equivalent FF models of the different P system variants.                   
+   \item (Extension) While doing the comprehensive survey of P system variants, if there are         
+         variants that are difficult or impossible to create an FF model for, formalize the features 
+         of these variants and use them to extended the FF. Examples for such P system variants with 
+         features that are not (directly) represented are available in \cite{polymorphic} and        
+         \cite{rule-create}.                                                                         
+   \item (Application) Create a simulator for FF models. Combining this simulator with the FF models 
+        of the P systems from the survey (objective 4) will result in a fairly general simulator     
+        than can simulate a wide variety of P systems.                                               
+\end{enumerate} 
+
+\bibliographystyle{plain}
+\bibliography{cs-296-extended-abstract}
+
+% ================================================================================================ %
+\end{document}

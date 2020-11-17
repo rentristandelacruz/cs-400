@@ -1,0 +1,256 @@
+
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry
+{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+}
+
+\newcommand{\s}{\text{ }}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\title{Technical Summary For: \\ ``A Formal Framework for Static (Tissue) P Systems"}
+\date{\today}
+\author{Ren Tristan A. de la Cruz}
+
+\begin{document}
+\maketitle
+
+\section{Multisets}
+
+\begin{enumerate}
+   \item $V=\{a_1,...,a_k\}$ - Alphabet
+   \item $m:V \rightarrow \mathbb{N}$ - Finite multiset over $V$
+   \item $m(a)$ - Number of instances of object $a$
+   \item $|m| = \sum_{a \in V} m(a)$ - Size of multiset $m$
+   \item $a_1^{m(a_1)}...a_k^{m(a_k)}$ - Representation of multiset $m$
+   \item $supp(m) = \{a \in V\s |\s m(a) \geq 1\}$ - Support of multiset $m$
+   \item $\langle V, \mathbb{N}\rangle$ - Set of all finite multiset over $V$
+   \item $m: V \rightarrow \mathbb{N} \cup \{\infty\}$ - Multiset over $V$ (includes infinite
+         multiset) 
+   \item $\langle V, \mathbb{N}_{\infty} \rangle$ - Set of all multiset over $V$
+   \item $[x \leq y] := [x,y \in \la V, \mathbb{N} \ra] \land [\forall a\in V][x(a) \leq y(a)] $
+   \item $[z = x + y]:= [x,y,z \in \la V,\mathbb{N} \ra] \land [\forall a\in V][z(a) = x(a) + y(a)]$
+   \item $z = x - y$ $:= [x,y,z \in \la V, \mathbb{N} \ra] \land [y\leq x] \land [\forall a\in V] 
+         [z(a) = x(a) - y(a)]$
+   \item $[P \leq Q] :=  [P,Q \in \la V, \mathbb{N} \ra^n] \land [P=(p_1,...,p_n)] \land 
+         [Q=(q_1,...,q_n)] \land [\forall i, 1 \leq i \leq n] [p_i \leq q_i]$
+   \item $[R = P + Q] :=  [P,Q,R \in \la V, \mathbb{N} \ra^n] \land [P=(p_1,...,p_n)] \land 
+         [Q=(q_1,...,q_n)] \land [R=(r_1,...,r_n)] \land $ \\ $[\forall i, 1 \leq i \leq n] 
+         [r_i = p_i + q_i]$
+   \item $[R = P - Q] :=  [P,Q,R \in \la V, \mathbb{N} \ra^n] \land [P=(p_1,...,p_n)] \land 
+         [Q=(q_1,...,q_n)] \land [R=(r_1,...,r_n)] \land $ \\ $[Q \leq P] \land 
+         [\forall i, 1 \leq i \leq n] [r_i = p_i - q_i]$
+\end{enumerate}
+
+\section{Network of Cells}
+
+\begin{enumerate}
+   \item $\Pi = (n, V, w, Inf, R)$
+   \item $n$ - Number of cells
+   \item $V$ - Alphabet of objects
+   \item $w = (w_1,...,w_n)$ - vector of finite multisets, $w_i \in \la V, \mathbb{N}\ra$ - 
+         finite multiset associated with cell $i$
+   \item $Inf = (Inf_1,...,Inf_n)$ - vector of sets, $Inf_i \subseteq V$ - set of symbols occuring 
+         infinitely often in cell $i$
+   \item $R = \{r_i\}$ - Set of interfactive rules
+\end{enumerate}
+
+\subsection{Interactive Rule}
+
+\begin{enumerate}
+   \item $r_i: (X \rightarrow Y; P, Q)$ - Interactive rule
+   \item $X = (x_1,...,x_n)$, $Y = (y_1,...,y_n)$, $[X,Y \in \la V,\mathbb{N}\ra^n]$, 
+         \begin{itemize}
+         \item $X$ contains the `consumed' multisets. $Y$ contains the `produced' multisets.
+         \end{itemize}
+   \item $P = (p_1,...,p_n)$, $Q = (q_1,...,q_n)$, $[\forall i, 1\leq i\leq n]
+         [p_i,q_i \subseteq \la V, \mathbb{N} \ra]$ 
+         \begin{itemize}
+         \item $p_i, q_i$ are  finite sets of multisets (over $V$), $\forall i$, $1 \leq i \leq n$.
+         \item $p_i$ contains all the required multisets for cell $i$, $q_i$ contains all the 
+               forbidden multisets for cell $i$. 
+         \end{itemize}
+\end{enumerate}
+
+\subsection{Configurations}
+
+\begin{enumerate}
+   \item $C = (u'_1,...,u'_n)$ - Configuration, $[\forall i, 1\leq i\leq n][u'_i \in \la V, 
+         \mathbb{N}_{\infty}\ra]$
+   \item $Inf^{\infty} = (Inf_1^{\infty},...,Inf_n^{\infty})$ - Vector of infinite multisets
+         \begin{itemize}
+         \item $Inf^{\infty}_i = b_1^{\infty}\cdots b_k^{\infty}$, $b_i \in Inf_i$, $\forall i$, $1
+               \leq i \leq k = |Inf_i|$ 
+         \end{itemize}
+   \item $C^{f} = (u_1,...,u_n)$ - Finite part of configuration $C$
+         \begin{itemize}
+         \item $u'_i = u_i + Inf_i^{\infty}$, $u_i \cap Inf_i = \emptyset$, $\forall i$, $1 \leq i 
+               \leq n$ 
+         \item $C^f_0 = w = (w_1,...,w_n)$ - finite parts of the initial configuration $C$.
+         \item $C_0 = w + Inf^{\infty}$ - full initial configuration of $\Pi$.
+         \end{itemize}
+
+\end{enumerate}
+
+\subsection{Eligibility of an Rule and Applicability of a Multiset of Rules}
+
+\begin{enumerate}
+   \item $eligibe(r,C) := [\forall i$, $1 \leq i \leq n][[x_i \subseteq u_i ] \land 
+         [\forall p \in p_i][p \subseteq u_i] \land [\forall q \in q_i][q \not\subseteq u_i]]$
+         \begin{itemize}
+         \item Eligibility of rule $r$ with respect to configuration $C$.
+         \item $C^f = (u_1,...,u_n)$ - vector of finite multisets ($u_i$). Multisets in the cells.
+         \item $X = (x_1,...,x_n)$ - vector of multisets ($x_i$). Multisets to be `consumed'.
+         \item $P = (p_1,...,p_n)$ - vector of multisets ($p_i$). Sets of required multisets for all 
+               cells.
+         \item $Q = (q_1,...,q_n)$ - vector of multisets ($q_i$). Sets of required multisets for all 
+               cells.
+         \end{itemize}
+   \item $[\exists j][x_j \cap (V - Inf_j) \neq \emptyset]$. There is at least one multiset $x_j$ in 
+         $X$  such that least one symbol appearing in $x_j$ that is no in $Inf_j$.
+   \item $Eligible(\Pi, C) = \{r \in R\s |\s eligible(r,C)\}$. Set of all eligible rules with
+         respect to configuration $C$.
+\end{enumerate}
+
+\subsection{Marking Algorithm}
+
+\begin{itemize}
+   \item $r_i: (X_i \rightarrow Y_i; P_i, Q_i)$ - interaction rule.
+   \item $X_i = (x_{i,1},...,x_{i,n})$ - vector of multisets.
+   \item $X'_i = (x'_{i,1},...,x'_{i,n})$ - vector of multisets.
+   \item $x_{i,j} = x'_{i,j} + Inf_{j}^{\infty}$. $x'_{i,j} \cap Inf_j = \emptyset$
+   \item $C^f = (v_1,...,v_n)$ - vector of multisets. Finite part of the configuration.
+   \item $R = \{r_1,...,r_h\}$ - set of eligible rules $r_i$.
+   \item $R' \in \langle R, \mathbb{N} \rangle$ - finite multiset of eligible rules.
+\end{itemize}
+
+\begin{enumerate}
+   \item $Mark_0(\Pi, C, R') = (\lambda,...,\lambda)$. $i = 1$.
+   \item If $X'_i \leq (C^f - Mark_{i-1}(\Pi, C, R'))$
+         \begin{itemize}
+         \item \texttt{TRUE}: $Mark_i(\Pi, C, R') = (C^f - Mark_{i-1}(\Pi, C, R')) - X'_i$
+         \item \texttt{FALSE}: return \texttt{false};
+         \end{itemize}
+   \item If $i=k$
+         \begin{itemize}
+         \item \texttt{TRUE}: return \texttt{true} and $Mark(\Pi, C, R') = Mark_k(\Pi, C, R')$
+         \item \texttt{FALSE}: $i = i + 1$. Go back to step 2.
+         \end{itemize}
+\end{enumerate}
+
+\subsection{Applicability of a Multiset of Rules}
+
+\begin{enumerate}
+   \item $appl(R',C) \Leftrightarrow $ marking algorithm returns \texttt{true} and $Mark(\Pi,C,R')$ 
+         - Applicability of multiset of rules $R'$ with respect to configuration $C$.
+   \item $Appl(\Pi, C) = \{R' \in \langle R, \mathbb{N} \rangle \s | \s R = Eligible(\Pi,C), 
+         appl(R',C) \}$ - Set of all applicable multisets of rules with respect to configuration $C$.
+   \item $Apply(\Pi, C,R') = C - Mark(\Pi, C, R') + \sum_{i=1}^{k} Y'_i $ - New configuration when
+         rules in $R'$ are applied.
+\end{enumerate}
+
+\subsection{Derivation Modes}
+
+\begin{enumerate}
+   \item $Appl(\Pi, C, \delta) \subseteq Appl(\Pi, C)$ - Set of applicable multisets of rules in 
+         $\delta$-mode. 
+   \item $Appl(\Pi, C, asyn) = Appl(\Pi, C)$ - \textit{Asynchronous} Mode ($\delta = asyn$).
+   \item $Appl(\Pi, C, sequ) = \{R' \in Appl(\Pi, C) \s | \s |R'|=1\}$ - \textit{Sequential} Mode 
+         ($\delta = sequ$) - One rule per step.
+   \item $Appl(\Pi, C, max) = \{R' \in Appl(\Pi, C) \s | \not\exists R'' \in Appl(\Pi, C), \s R' i
+         \not\subseteq R'' \}$ - \textit{Maximally Parallel} Mode ($\delta = max$) - Adding any rule
+         to a maximally parallel $R'$ will result in an inapplicable multiset of rules.
+   \item $Appl(\Pi, C, min) = \{R' \in Appl(\Pi, C) \s | \s \not\exists R'' \in Appl(\Pi,C), \s R' 
+         \subseteq R'', \exists j, (R''-R') \cap R_j \neq \emptyset, R' \cap R_j = \emptyset\}$
+         - \textit{Minimally Parallel} Mode ($\delta = min$) - There is no partition   
+          $R = R_1 \cup R_2 \cup \cdots \cup R_h$. Rule set $R$ is be partitioned.
+          $R' \subseteq R''$. $R''$ `extends' R'.
+   \item $\delta \in \{asyn, sequ, max, min\}$ - Basic derivation modes
+   \item $Appl(\Pi, C, max_{rule}\delta) = \{R' \in Appl(\Pi, C, \delta) \s | \s \not\exists R'' 
+         \in Appl(\Pi,C, \delta) \s |R''| > |R'|\}$\\ - \textit{Maximum Rules} $\delta$-Mode.
+   \item $Appl(\Pi, C, max_{set}\delta) = \{R' \in Appl(\Pi, C, \delta) \s | \s \not\exists R'' \in 
+         Appl(\Pi,C, \delta) \s ||R''|| > ||R'||\}$\\ - \textit{Maximum Sets (Partitions)} $
+         \delta$-Mode.
+   \item $Appl(\Pi, C, all_{set}\delta) = \{R' \in Appl(\Pi, C, \delta) \s | \s \forall j, 1 \leq j 
+         \leq h, (R_j \cap \bigcup_{X \in Appl(\Pi,C)} X \neq \emptyset) \rightarrow (R_j \cap R' 
+         \neq \emptyset)\}$ - \textit{All Set} $\delta$-Mode.
+\end{enumerate}
+
+\subsection{Transition}
+
+\begin{enumerate}
+   \item $[C \Rightarrow_{(\Pi, \Delta)} C'] \Leftrightarrow [[\exists R' \in Appl(\Pi,C,\Delta)]
+         [C'=Apply(\Pi,C,R')]]$ - \textit{Transition} in $\Delta$-mode.
+   \item $[C \Rightarrow_{(\Pi, \Delta)}^{*} C']$ - Transitive closure and reflexive nature of the 
+         transition relation $\Rightarrow_{(\Pi,\Delta)}$
+   \item $[accessible(C,\Pi, \Delta)] \Leftrightarrow [C_0 \Rightarrow_{(\Pi, \Delta)} C]$ - 
+         Accessibility of configuration $C$ in $\Delta$-mode.
+   \item $Acc(\Pi, \Delta) = \{C \s | \s accessible(C, \Pi, \Delta)\}$ - Set of all accessible
+         configurations in $\Delta$-mode derivation. 
+   \item $[Deterministic(\Pi, \Delta)] \Leftrightarrow [\forall C \in Acc(\Pi, \Delta)][Appl(\Pi, C, 
+         \Delta)| \leq 1]$ - Determinism of system $\Pi$ under $\Delta$-mode derivation.
+\end{enumerate}
+
+\subsection{Halting Conditions} 
+
+\begin{enumerate}
+   \item $H(\Pi, \Delta) = \{C' \in Acc(\Pi, \Delta) \s | \s Appl(\Pi, C', \Delta) = \emptyset\}$ -
+         Set of \textit{total halting} configurations. Under $\Delta$ derivation mode, accessible 
+         configurations where there are no applicable multisets of rules.
+   \item $A(\Pi, \Delta) = \{C' \in Acc(\Pi, \Delta) \s | \s Appl(\Pi, C', \Delta) \neq \emptyset, 
+         \forall R' \in Appl(\Pi,C',\Delta), Apply(\Pi,C',R')=C' \}$ - Set of \textit{adult halting}
+         configurations. Under $\Delta$ derivation mode, accessible configurations where for all 
+         applicable multiset of rules $R'$ applying $R'$ to configuration $C'$ result to $C'$.
+   \item $h(\Pi, \Delta) = \{C' \in Acc(\Pi, \Delta) \s | \s \not\exists R' \in Appl(\Pi, C', 
+         \Delta), \forall i, 1 \leq i \leq h, R' \cap R_j \neq \emptyset \}$ - Set of 
+         \textit{partial halting} configurations. Under $\Delta$ derivation mode, accessible 
+         configurations where there are no applicable multiset of rules $R'$ such that $R'$
+         contains rules from all partitions $R_j$.
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

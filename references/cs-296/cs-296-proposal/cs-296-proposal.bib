@@ -1,0 +1,196 @@
+@article{tissue-p,
+title = "Tissue P systems",
+journal = "Theoretical Computer Science",
+volume = "296",
+number = "2",
+pages = "295 - 326",
+year = "2003",
+note = "Machines, Computations and Universality",
+issn = "0304-3975",
+doi = "https://doi.org/10.1016/S0304-3975(02)00659-X",
+url = "http://www.sciencedirect.com/science/article/pii/S030439750200659X",
+author = "Carlos Martín-Vide and Gheorghe Păun and Juan Pazos and Alfonso Rodríguez-Patón",
+keywords = "Natural computing, Membrane computing, P systems, Chomsky hierarchy, Lindenmayer hierarchy, NP-complete problems",
+abstract = "Starting from the way the inter-cellular communication takes place by means of protein channels (and also from the standard knowledge about neuron functioning), we propose a computing model called a tissue P system, which processes symbols in a multiset rewriting sense, in a net of cells. Each cell has a finite state memory, processes multisets of symbol-impulses, and can send impulses (“excitations”) to the neighboring cells. Such cell nets are shown to be rather powerful: they can simulate a Turing machine even when using a small number of cells, each of them having a small number of states. Moreover, in the case when each cell works in the maximal manner and it can excite all the cells to which it can send impulses, then one can easily solve the Hamiltonian Path Problem in linear time. A new characterization of the Parikh images of ET0L languages is also obtained in this framework. Besides such basic results, the paper provides a series of suggestions for further research."
+}
+
+@article{comp-w-mem,
+title = "Computing with Membranes",
+journal = "Journal of Computer and System Sciences",
+volume = "61",
+number = "1",
+pages = "108 - 143",
+year = "2000",
+issn = "0022-0000",
+doi = "https://doi.org/10.1006/jcss.1999.1693",
+url = "http://www.sciencedirect.com/science/article/pii/S0022000099916938",
+author = "Gheorghe Păun",
+keywords = "membrane structure, P system, recursively enumerable set, matrix grammar, splicing, natural computing",
+abstract = "We introduce a new computability model, of a distributed parallel type, based on the notion of a membrane structure. Such a structure consists of several cell-like membranes, recurrently placed inside a unique “skin” membrane. A plane representation is a Venn diagram without intersected sets and with a unique superset. In the regions delimited by the membranes there are placed objects. These objects are assumed to evolve: each object can be transformed in other objects, can pass through a membrane, or can dissolve the membrane in which it is placed. A priority relation between evolution rules can be considered. The evolution is done in parallel for all objects able to evolve. In this way, we obtain a computing device (we call it a P system): start with a certain number of objects in a certain membrane and let the system evolve; if it will halt (no object can further evolve), then the computation is finished, with the result given as the number of objects in a specified membrane. If the development of the system goes forever, then the computation fails to have an output. We prove that the P systems with the possibility of objects to cooperate characterize the recursively enumerable sets of natural numbers; moreover, systems with only two membranes suffice. In fact, we do not need cooperating rules, but we only use catalysts, specified objects which are present in the rules but are not modified by the rule application. One catalyst suffices. A variant is also considered, with the objects being strings over a given alphabet. The evolution rules are now based on string transformations. We investigate the case when either the rewriting operation from Chomsky grammars (with respect to context-free productions) or the splicing operation from H systems investigated in the DNA computing is used. In both cases, characterizations of recursively enumerable languages are obtained by very simple P systems: with three membranes in the rewriting case and four in the splicing case. Several open problems and directions for further research are formulated"
+}
+
+@InProceedings{active-mem,
+author="P{\u{a}}un, Andrei",
+editor="Antoniou, I.
+and Calude, C. S.
+and Dinneen, M. J.",
+title="{On P Systems with Active Membranes}",
+booktitle="Unconventional Models of Computation, UMC'2K",
+year="2001",
+publisher="Springer London",
+address="London",
+pages="187--201",
+abstract="The paper deals with the vivid area of computing with membranes (P systems). We improve here two recent results about the socalled P systems with active membranes. First, we show that the Hamiltonian Path Problem can be solved in polynomial time by P systems with active membranes where the membranes are only divided into two new membranes (a result of this type was obtained by Krishna and Rama, [4], but making use of the possibility of dividing a membrane in an arbitrary number of new membranes). We also show that HPP can be solved in polynomial time also by a variant of P systems, with the possibility of dividing non-elementary membranes under the influence of objects present in them. Then, we show that membrane division (and even membrane dissolving) is not necessary in order to show that such systems are computationally complete.",
+isbn="978-1-4471-0313-4"
+}
+
+@article{snp,
+ author = {Ionescu, Mihai and P\u{a}un, Gheorghe and Yokomori, Takashi},
+ title = {Spiking Neural P Systems},
+ journal = {Fundam. Inf.},
+ issue_date = {August 2006},
+ volume = {71},
+ number = {2,3},
+ month = feb,
+ year = {2006},
+ issn = {0169-2968},
+ pages = {279--308},
+ numpages = {30},
+ url = {http://dl.acm.org/citation.cfm?id=1227505.1227513},
+ acmid = {1227513},
+ publisher = {IOS Press},
+ address = {Amsterdam, The Netherlands, The Netherlands},
+ keywords = {Spiking neurons, Turing computability, membrane computing, semilinear set},
+}
+
+
+@InProceedings{ecp,
+author="Cavaliere, Matteo",
+editor="P{\u{A}}un, Gheorghe
+and Rozenberg, Grzegorz
+and Salomaa, Arto
+and Zandron, Claudio",
+title="Evolution--Communication P Systems",
+booktitle="Membrane Computing",
+year="2003",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="134--145",
+abstract="We propose a new class of P systems that use simple evolution rules (classical evolution rules without communication targets) and symport/antiport rules (for communication).",
+isbn="978-3-540-36490-0"
+}
+
+
+@InProceedings{ff-static,
+author="Freund, Rudolf
+and Verlan, Sergey",
+editor="Eleftherakis, George
+and Kefalas, Petros
+and P{\u{a}}un, Gheorghe
+and Rozenberg, Grzegorz
+and Salomaa, Arto",
+title="A Formal Framework for Static (Tissue) P Systems",
+booktitle="Membrane Computing",
+year="2007",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="271--284",
+abstract="The formalism of P systems is known for many years, yet just recently new derivation modes and halting conditions have been proposed. For developing comparable results, a formal description of their functioning, in particular, of the derivation step is necessary. We introduce a formal general framework for static membrane systems that aims to capture most of the essential features of (tissue) P systems and to define their functioning in a formal way.",
+isbn="978-3-540-77312-2"
+}
+
+
+@InProceedings{ff-using,
+author="Verlan, Sergey",
+editor="Alhazov, Artiom
+and Cojocaru, Svetlana
+and Gheorghe, Marian
+and Rogozhin, Yurii
+and Rozenberg, Grzegorz
+and Salomaa, Arto",
+title="Using the Formal Framework for P Systems",
+booktitle="Membrane Computing",
+year="2014",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="56--79",
+abstract="In this article we focus on the model called the formal framework for P systems. This model provides a descriptional language powerful enough to represent in a simple way, via a strong bisimulation, most of the variants of P systems. The article presents a series of concrete examples of the application of the formal framework in order to understand, extend, compare and explain different models of P systems leading to new research ideas and open problems.",
+isbn="978-3-642-54239-8"
+}
+
+@article{ff-dynamic,
+author = { Rudolf   Freund  and  Ignacio   Pérez-Hurtado  and  Agustín   Riscos-Núñez  and  Sergey   Verlan },
+title = {A Formalization of Membrane Systems with Dynamically Evolving Structures},
+journal = {International Journal of Computer Mathematics},
+volume = {90},
+number = {4},
+pages = {801-815},
+year  = {2013},
+publisher = {Taylor \& Francis},
+doi = {10.1080/00207160.2012.748899},
+
+URL = { 
+        https://doi.org/10.1080/00207160.2012.748899
+    
+},
+eprint = { 
+        https://doi.org/10.1080/00207160.2012.748899
+    
+}
+
+}
+
+@InProceedings{ff-snp,
+author="Sergey Verlan and Rudolf Freund and Artiom Alhazov and Linqiang Pan",
+editor="Gheorghe P{\u{a}}un",
+title={A Formal Framework for Spiking Neural P Systems},
+booktitle="Proceedings of the 20th International Conference on Membrane Computing",
+year="2019",
+publisher="Bibliostar",
+}
+
+@Article{sym-anti-port,
+author="P{\^a}un, Andrei
+and P{\^a}un, Gheorghe",
+title={The Power of Communication: P Systems with Symport/Antiport},
+journal="New Generation Computing",
+year="2002",
+month="Sep",
+day="01",
+volume="20",
+number="3",
+pages="295--305",
+abstract="In the attempt to have a framework where the computation is done by communication only, we consider the biological phenomenon of trans-membrane transport of couples of chemicals (one say symport when two chemicals pass together through a membrane, in the same direction, and antiport when two chemicals pass simultaneously through a membrane, in opposite directions). Surprisingly enough, membrane systems without changing (evolving) the used objects and with the communication based on rules of this type are computationally complete, and this result is achieved even for pairs of communicated objects (as encountered in biology). Five membranes are used; the number of membranes is reduced to two if more than two chemicals may collaborate when passing through membranes.",
+issn="1882-7055",
+doi="10.1007/BF03037362",
+url="https://doi.org/10.1007/BF03037362"
+}
+
+@InProceedings{polymorphic,
+author="Alhazov, Artiom
+and Ivanov, Sergiu
+and Rogozhin, Yurii",
+editor="Gheorghe, Marian
+and Hinze, Thomas
+and P{\u{a}}un, Gheorghe
+and Rozenberg, Grzegorz
+and Salomaa, Arto",
+title="Polymorphic P Systems",
+booktitle="Membrane Computing",
+year="2011",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="81--94",
+abstract="Membrane computing is a formal framework of distributed parallel computing. In this paper we introduce a variant of the multiset rewriting model where the rules of every region are defined by the contents of interior regions, rather than being explicitly specified in the description of the system. This idea is inspired by the von Neumann's concept of ``program is data'' and also related to the research direction proposed by Gh. P{\u{a}}un about the cell nucleus.",
+isbn="978-3-642-18123-8"
+}
+
+@article{rule-create,
+author = {Arroyo, Fernando and Baranda, Angel and Castellanos, Juan and Paun, Gheorghe},
+year = {2002},
+month = {01},
+pages = {369-381},
+title = {Membrane Computing: The Power of (Rule) Creation.},
+volume = {8},
+journal = {Journal of Universal Computer Science}
+}
